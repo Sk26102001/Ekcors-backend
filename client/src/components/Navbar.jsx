@@ -296,9 +296,9 @@ import UserMenu from "./user-menu";
 const navigationLinks = [
   { active: true, href: "/", label: "Home" },
   { href: "/listings", label: "Listings" },
-  { href: "/owner", label: "Owner" },
+  // { href: "/owner", label: "Owner" },
   { href: "/about", label: "About" },
-  { href: "/vendors", label: "Vendors" },
+  // { href: "/vendors", label: "Vendors" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -400,7 +400,7 @@ export default function Navbar() {
                       </Link>
                     </DrawerClose>
                   </li>
-                  <li>
+                  {/* <li>
                     <DrawerClose asChild>
                       <Link
                         className="flex w-full items-center gap-2 py-2"
@@ -410,7 +410,7 @@ export default function Navbar() {
                         Owner
                       </Link>
                     </DrawerClose>
-                  </li>
+                  </li> */}
                   <li>
                     <DrawerClose asChild>
                       <Link
@@ -422,7 +422,7 @@ export default function Navbar() {
                       </Link>
                     </DrawerClose>
                   </li>
-                                   <li>
+                                   {/* <li>
                     <DrawerClose asChild>
                       <Link
                         className="flex w-full items-center gap-2 py-2"
@@ -432,7 +432,7 @@ export default function Navbar() {
                         Vendors
                       </Link>
                     </DrawerClose>
-                  </li>
+                  </li> */}
                   
                   <li>
                     <DrawerClose asChild>

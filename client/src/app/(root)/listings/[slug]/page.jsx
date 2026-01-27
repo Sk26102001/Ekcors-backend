@@ -132,7 +132,7 @@ function page() {
                                 <p>Total:</p>
                                 <p className="font-semibold text-yellowClr text-lg">₹5000</p>
                             </div>
-                            <Link className={'w-full'}>Book now</Link>
+                            <Button className={'w-full'}>Book now</Button>
                         </div>
                         <div className="space-y-1">
                             <p className="text-white font-semibold">Location:</p>
