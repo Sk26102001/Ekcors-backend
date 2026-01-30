@@ -146,7 +146,7 @@
 //                       </Link>
 //                     </DrawerClose>
 //                   </li>
-                  
+
 //                   <li>
 //                     <DrawerClose asChild>
 //                       <Link
@@ -259,9 +259,9 @@
 // }
 
 
+"use client"
 
-
-import { useId } from "react";
+import { useAuth } from "@/context/useAuth";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
@@ -292,6 +292,8 @@ import Image from "next/image";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { BadgeIndianRupee, Banknote, Bookmark, ChevronsUpDown, CirclePlus, CircleUserRound, ClipboardCheck, Headset, Home, LogIn, LogOut, Scroll, TicketCheck } from "lucide-react";
 import UserMenu from "./user-menu";
+import { useRouter } from "next/navigation";
+import { logoutUser } from "@/api/userApis";
 
 const navigationLinks = [
   { active: true, href: "/", label: "Home" },
@@ -303,7 +305,22 @@ const navigationLinks = [
 ];
 
 export default function Navbar() {
-  const id = useId();
+  const { user, setUser } = useAuth()
+  const router = useRouter()
+
+  const handleLogout = async () => {
+    try {
+      const res = await logoutUser()
+
+      if (res.status === 'success') {
+        setUser(null)
+        router.replace('/sign-in')
+        router.refresh()
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <header className="px-4 md:px-6 fixed top-0 left-0 right-0 z-50 bg-neutral-800">
@@ -336,14 +353,18 @@ export default function Navbar() {
 
         <div className="flex flex-1 items-center justify-end gap-2">
 
-          <Button asChild>
-            <Link href="/sign-in"><CirclePlus size={16} /> List Machine</Link>
-          </Button>
-          {!true ? <Button asChild className={'md:inline-flex hidden'}>
-            <Link href="/sign-in"><LogIn size={16} /> Login</Link>
-          </Button> : <UserMenu />}
+          {user && <Button asChild className={'rounded-full'}>
+            <Link href="#"><CirclePlus size={16} /> List Machine</Link>
+          </Button>}
+
+          {user
+            ? <UserMenu handleLogout={handleLogout} />
+            : <Button asChild className={'md:inline-flex hidden'}>
+              <Link href="/sign-in"><LogIn size={16} /> Login</Link>
+            </Button>}
+
           <Drawer direction="left">
-            <DrawerTrigger className="inline-block md:hidden" asChild>
+            <DrawerTrigger className="inline-flex md:hidden" asChild>
               <Button className="group md:hidden" size="icon" variant="outline">
                 <svg
                   className="pointer-events-none"
@@ -422,7 +443,7 @@ export default function Navbar() {
                       </Link>
                     </DrawerClose>
                   </li>
-                                   {/* <li>
+                  {/* <li>
                     <DrawerClose asChild>
                       <Link
                         className="flex w-full items-center gap-2 py-2"
@@ -433,7 +454,7 @@ export default function Navbar() {
                       </Link>
                     </DrawerClose>
                   </li> */}
-                  
+
                   <li>
                     <DrawerClose asChild>
                       <Link
@@ -460,7 +481,7 @@ export default function Navbar() {
               </div>
 
               <DrawerFooter>
-                {false ? (
+                {user ? (
                   <DropdownMenu>
                     <DropdownMenuTrigger
                       asChild
@@ -468,20 +489,21 @@ export default function Navbar() {
                     >
                       <Button
                         size="lg"
-                        className="border data-[state=open]:bg-yellowClr/80 data-[state=open]:text-sidebar-accent-foreground data-[state=open]:border"
+                        className="data-[state=open]:bg-yellowClr/80 data-[state=open]:text-sidebar-accent-foreground"
                       >
                         <Avatar className="h-8 w-8 rounded-xl">
-                          <AvatarImage src={"/user/avatar"} />
+                          <AvatarImage src={`${process.env.NEXT_PUBLIC_API_URL}${user?.avatar}`} />
                           <AvatarFallback className="bg-white uppercase">
-                            SA
+                            {user?.fullName.split(' ')[0][0].toUpperCase()}
+                            {user?.fullName.split(' ')[1][0].toUpperCase()}
                           </AvatarFallback>
                         </Avatar>
                         <div className="grid flex-1 text-left text-sm leading-tight">
                           <span className="truncate font-medium capitalize">
-                            Hi, User
+                            Hi, {user?.fullName.split(' ')[0]}
                           </span>
                           <span className="truncate text-[10px]">
-                            DRIVER
+                            {user?.role.toUpperCase()}
                           </span>
                         </div>
                         <ChevronsUpDown className="ml-auto size-4" />
@@ -516,7 +538,7 @@ export default function Navbar() {
                       <DropdownMenuItem asChild>
                         <button
                           className="flex w-full cursor-pointer items-center gap-2 text-xs font-medium"
-                        // onClick={handleLogout}
+                          onClick={handleLogout}
                         >
                           <LogOut className="text-yellowClr" />
                           Log out

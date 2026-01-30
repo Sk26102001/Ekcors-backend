@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ProductImageSilder from "@/components/ProductImageSlider"
 import Image from "next/image"
 import dynamic from 'next/dynamic';
@@ -19,6 +19,8 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from "@/components/ui/accordion"
+import { useParams } from "next/navigation";
+import { getMachinery } from "@/api/machineryApis";
 
 const Map = dynamic(() => import('@/components/Map'), {
     ssr: false,
@@ -38,22 +40,40 @@ const images = [
 function page() {
     const [open, setOpen] = useState(false);
     const [date, setDate] = useState(new Date());
+    const [data, setData] = useState({});
+
+    const params = useParams();
+
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const response = await getMachinery(params.slug);
+                setData(response?.data?.machinery);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        fetchData();
+    }, []);
 
     return (
         <>
             <section className="bg-neutral-700 md:px-6 px-4">
                 <div className="md:py-12 sm:py-8 py-6 max-w-7xl mx-auto grid md:grid-cols-2 md:gap-8 sm:gap-6 gap-4">
                     <div className="h-fit md:sticky top-22">
-                        <ProductImageSilder images={images} />
+                        <ProductImageSilder images={data?.images} />
                     </div>
                     <div className="md:mt-4 space-y-2">
-                        <h1 className="sm:text-4xl text-3xl font-semibold text-white">Lorem ipsum dolor sit amet.</h1>
-                        <p className="text-sm text-yellowClr font-medium">HEAVY VEHICLE</p>
-                        <p className="text-sm text-neutral-300">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas voluptates, ipsam vel magnam facere minus!</p>
+                        <h1 className="sm:text-4xl text-3xl font-semibold text-white">{data?.title}</h1>
+                        <p className="text-sm text-yellowClr font-medium">{data?.category}</p>
+                        <p className="text-sm text-neutral-300">
+                            {data?.description}
+                        </p>
                         <div className="grid grid-cols-3 divide-x divide-neutral-600 text-white gap-4 border-t border-b border-neutral-600 py-2 text-2xl font-medium">
-                            <p className="text-center">₹500<span className="text-base text-yellowClr">/m</span></p>
-                            <p className="text-center">₹500<span className="text-base text-yellowClr">/w</span></p>
-                            <p className="text-center">₹500<span className="text-base text-yellowClr">/d</span></p>
+                            <p className="text-center">₹{data?.pricePerHour}<span className="text-base text-yellowClr">/m</span></p>
+                            <p className="text-center">₹{data?.pricePerDay}<span className="text-base text-yellowClr">/w</span></p>
+                            <p className="text-center">₹{data?.pricePerMonth}<span className="text-base text-yellowClr">/d</span></p>
                         </div>
                         <div className="px-4 py-2 flex justify-between items-center">
                             <div className="flex gap-2 items-center">

@@ -1,3 +1,5 @@
+'use client'
+
 import CategorySlider from "@/components/CategorySlider";
 import Cta from "@/components/Cta";
 import HeroSection from "@/components/HeroSection";
@@ -19,8 +21,11 @@ import { ArrowDownAZ, ArrowDownNarrowWide, ArrowDownWideNarrow, ArrowRight, Arro
 import ProductCard from "@/components/ProductCard";
 import Image from "next/image";
 import Link from "next/link";
+import { useMachinery } from "@/context/useMachinery";
 
 export default function Home() {
+  const { machinery } = useMachinery()
+
   return (
     <>
       <HeroSection />
@@ -100,8 +105,8 @@ export default function Home() {
             </div>
           </div>
           <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 sm:gap-4 gap-3">
-            {Array.from({ length: 8 }, (_, index) => (
-              <ProductCard key={index} />
+            {machinery?.slice(0, 12)?.map((machinery, index) => (
+              <ProductCard key={index} data={machinery} />
             ))}
           </div>
           <div className="mt-8 text-center">

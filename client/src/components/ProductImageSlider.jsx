@@ -11,6 +11,8 @@ export default function ProductImageSilder({ images = [] }) {
     const mainRef = useRef(null)
     const thumbsRef = useRef(null)
 
+    console.log(images)
+
     useEffect(() => {
         if (mainRef.current && thumbsRef.current) {
             const main = mainRef.current.splide
@@ -45,8 +47,9 @@ export default function ProductImageSilder({ images = [] }) {
                 {images.map((img, i) => (
                     <SplideSlide key={i}>
                         <Image
-                            src={`${img}`}
+                            src={`${process.env.NEXT_PUBLIC_API_URL}${img}`}
                             alt={`Product ${i + 1}`}
+                            unoptimized
                             className="w-full h-full rounded-2xl object-contain"
                             width={1000}
                             height={1000}
@@ -78,8 +81,9 @@ export default function ProductImageSilder({ images = [] }) {
                 {images.map((img, i) => (
                     <SplideSlide key={i}>
                         <Image
-                            src={`${img}`}
+                            src={`${process.env.NEXT_PUBLIC_API_URL}${img}`}
                             alt={`Thumbnail ${i + 1}`}
+                            unoptimized
                             className="hover:border-goldClr h-full w-full cursor-pointer rounded-xl border border-transparent object-cover transition-all"
                             width={1000}
                             height={1000}

@@ -1,15 +1,12 @@
 'use client'
 
-import { useRouter } from "next/navigation";
-// import { useAuth } from "@/context/useAuth";
+import { useAuth } from "@/context/useAuth";
 import {
   Bookmark,
+  ChevronDown,
   List,
-  ListCheck,
   ListOrdered,
   LogOutIcon,
-  ShieldUser,
-  StickyNote,
   User,
 } from "lucide-react"
 import {
@@ -28,43 +25,33 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import Link from "next/link";
-// import { logoutUser } from "@/api/userController";
 
-export default function UserMenu() {
-  // const { user, fetchUser } = useAuth()
-  // const router = useRouter()
-
-  const handleLogout = async () => {
-    // try {
-    //   const res = await logoutUser()
-    //   await fetchUser()
-    //   if (res.status === 'success') {
-    //     router.push('/sign-in')
-    //   }
-    // } catch (error) {
-    //   console.log(error)
-    // }
-  }
+export default function UserMenu({ handleLogout }) {
+  const { user } = useAuth()
 
   return (
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="h-auto md:flex hidden p-0 hover:bg-transparent cursor-pointer">
-          <Avatar>
-            <AvatarImage src={`/images/default-avatar.jpg`} alt="Profile image" />
-            <AvatarFallback className={'bg-orangeClr/60'}>
-              SA
+        <Button variant="ghost" className="h-auto md:flex gap-1 hidden cursor-pointer border border-white/60 p-[3px] rounded-full hover:bg-white/40">
+          <Avatar className={'w-7 h-7'}>
+            <AvatarImage src={`${process.env.NEXT_PUBLIC_API_URL}${user?.avatar}`} alt="Profile image" />
+            <AvatarFallback className={'bg-yellowClr text-xs'}>
+              {user?.fullName.split(' ')[0][0].toUpperCase()}
+              {user?.fullName.split(' ')[1][0].toUpperCase()}
             </AvatarFallback>
           </Avatar>
+          <span>
+            <ChevronDown size={16} className="opacity-90 text-white/60" aria-hidden="true" />
+          </span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="min-w-[200px]" align="end">
         <DropdownMenuLabel className="flex min-w-0 flex-col">
           <span className="text-foreground truncate text-sm font-medium">
-            John Doe
+            {user?.fullName}
           </span>
           <span className="text-muted-foreground truncate text-xs font-normal">
-            johndoe@gmail.com
+            {user?.email}
           </span>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />

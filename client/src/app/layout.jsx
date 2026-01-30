@@ -3,6 +3,8 @@ import "./globals.css";
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
 import Script from "next/script";
+import { Toaster } from "sonner";
+import ClientWrapper from "@/wrapper/ClientWrapper";
 
 const anton = Anton_SC({
   variable: "--font-anton",
@@ -33,7 +35,10 @@ export default function RootLayout({ children }) {
       <body
         className={`${anton.variable} ${inter.variable} font-sans antialiased`}
       >
-        {children}
+        <Toaster position="top-right" />
+        <ClientWrapper>
+          {children}
+        </ClientWrapper>
         <Script
           type="module"
           src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/dotPulse.js"
