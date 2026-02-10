@@ -3,7 +3,10 @@
 import Link from "next/link";
 import { usePathname, useParams } from "next/navigation";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+
+import { Button } from "@/components/ui/button";
+
+
 import {
   User,
   Users,
@@ -28,10 +31,10 @@ export default function RootLayout({ children }) {
 
   const navItems = [
     { title: "Dashboard", url: `/admin/dashboard`, icon: LayoutDashboard, roles: ["admin"] },
-    { title: "Profile", url: `/admin/profile`, icon: User, roles: ["admin"] },
+    // { title: "Profile", url: `/admin/profile`, icon: User, roles: ["admin"] },
     { title: "booking-management", url: `/admin/booking-management`, icon: ShoppingCart, roles: ["admin"] },
     { title: "driver-management", url: `/admin/driver-management`, icon: Truck, roles: ["admin"] },
-    { title: "machine & equipment", url: `/admin/machine & equipment`, icon: Wrench, roles: ["admin"] },
+    { title: "equipment-management", url: `/admin/equipment-management`, icon: Wrench, roles: ["admin"] },
     { title: "user-management", url: `/admin/user-management`, icon: Users, roles: ["admin"] },
     { title: "vendor-management", url: `/admin/vendor-management`, icon: Store, roles: ["admin"] },
     { title: "wallet", url: `/admin/wallet`, icon: Wallet, roles: ["admin"] },
@@ -48,6 +51,7 @@ export default function RootLayout({ children }) {
             <SidebarContent className="p-4 bg-[#262626]">
               <div className="mb-8 px-2">
                 <h2 className="text-[#fbb316] text-xl font-bold uppercase tracking-tight">EkCors Admin</h2>
+               
                 <div className="flex items-center gap-2 mt-1">
                   {/* <div className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" /> */}
                   {/* <span className="text-[10px] text-zinc-500 font-bold uppercase">{userRole} Mode</span> */}
@@ -65,10 +69,19 @@ export default function RootLayout({ children }) {
                               <item.icon className={`h-5 w-5 ${isActive ? "text-[#fbb316]" : "text-neutral-500 hover"}`} />
                               <span className="text-[15px] font-medium">{item.title}</span>
                             </Link>
+                         
                           </SidebarMenuButton>
                         </SidebarMenuItem>
                       );
                     })}
+                     <Link
+  href="/admin/setting"
+  className="w-full py-2 px-2 mt-6 flex items-center justify-center bg-yellowClr text-md font-semibold rounded-md hover:bg-yellowClr/80"
+>
+  Setting
+</Link>
+
+                     <Link href="/admin/logout" className="w-full py-2 px-2 mt-1 flex items-center justify-center bg-yellowClr text-md font-semibold rounded-md hover:bg-yellowClr/80">logout</Link>
                   </SidebarMenu>
                 </SidebarGroupContent>
               </SidebarGroup>
@@ -77,7 +90,7 @@ export default function RootLayout({ children }) {
           <main className="flex-1 bg-[#1a1a1a] md:p-8 sm:p-6 p-4 w-full overflow-x-hidden">{children}</main>
         </div>
       </SidebarProvider>
-      <Footer />
+
     </div>
   );
 }
