@@ -7,66 +7,63 @@ import { AutoScroll } from '@splidejs/splide-extension-auto-scroll';
 
 const customerReviews = [
     {
-        name: 'Riya Mehta',
-        profession: 'Fashion Designer',
-        review: 'These aligners literally changed my smile! Super comfortable to wear all day and they’re almost invisible. Mujhe pehenke bahar jaana bhi convenient lagta hai.',
-        image: 'https://ui-avatars.com/api/?name=Riya+Mehta&background=FFB22C&color=854836',
+        name: "Rakesh Kumar",
+        profession: "Civil Contractor",
+        review:
+            "Platform ka experience kaafi smooth raha. Excavator booking easy thi aur machine condition exactly wahi thi jo listing mein dikhaya gaya tha. Time aur cost dono save hue.",
+        image: "https://ui-avatars.com/api/?name=Rakesh+Kumar&background=FFB22C&color=854836",
     },
     {
-        name: 'Ankit Sharma',
-        profession: 'Software Engineer',
-        review: 'Great product! Starting weeks mein hi farak dikhne laga. Coding karte waqt bhi koi dikkat nahi hoti, lightweight and easy to manage.',
-        image: 'https://ui-avatars.com/api/?name=Ankit+Sharma&background=FFB22C&color=854836',
+        name: "Amit Verma",
+        profession: "Project Manager",
+        review:
+            "Multiple sites ke liye machinery arrange karni hoti hai, aur yahan filtering kaafi helpful hai. Location-based search ne kaam aur fast kar diya.",
+        image: "https://ui-avatars.com/api/?name=Amit+Verma&background=FFB22C&color=854836",
     },
     {
-        name: 'Neha Kapoor',
-        profession: 'Dentist',
-        review: 'As a dentist myself, I really appreciate the quality and fit of these aligners. Bahut hi professional process tha from start to finish. Highly recommend to my own patients too!',
-        image: 'https://ui-avatars.com/api/?name=Neha+Kapoor&background=FFB22C&color=854836',
+        name: "Neha Singh",
+        profession: "Real Estate Developer",
+        review:
+            "Verified owners hone ki wajah se trust bana. Crane aur batching plant dono bookings smooth rahi. Support team bhi responsive thi.",
+        image: "https://ui-avatars.com/api/?name=Neha+Singh&background=FFB22C&color=854836",
     },
     {
-        name: 'Rahul Verma',
-        profession: 'Marketing Manager',
-        review: 'Meetings, presentations, travel — in sab ke beech aligners ne mujhe bilkul bhi disturb nahi kiya. Comfortable and looks clean — very impressive.',
-        image: 'https://ui-avatars.com/api/?name=Rahul+Verma&background=FFB22C&color=854836',
+        name: "Imran Khan",
+        profession: "Site Supervisor",
+        review:
+            "Road roller rent pe liya tha highway project ke liye. Pricing transparent thi aur koi hidden charges nahi mile. Kaafi professional setup hai.",
+        image: "https://ui-avatars.com/api/?name=Imran+Khan&background=FFB22C&color=854836",
     },
     {
-        name: 'Sakshi Nair',
-        profession: 'Student',
-        review: 'College jaate waqt pehnna easy hai aur friends ko pata bhi nahi chalta. Pehle braces ka soch ke dar lagta tha, but these aligners are totally stress-free!',
-        image: 'https://ui-avatars.com/api/?name=Sakshi+Nair&background=FFB22C&color=854836',
+        name: "Suresh Patel",
+        profession: "Infrastructure Contractor",
+        review:
+            "Pehlay local contacts pe depend rehna padta tha. Ab ek hi platform pe machines compare kar sakte hain. Kaam kaafi easy ho gaya.",
+        image: "https://ui-avatars.com/api/?name=Suresh+Patel&background=FFB22C&color=854836",
     },
     {
-        name: 'Arjun Bhatia',
-        profession: 'Banker',
-        review: 'Aligners ka result genuinely acha hai. Timely delivery, smooth fitting process, aur customer support bhi kaafi helpful tha. Totally worth the investment.',
-        image: 'https://ui-avatars.com/api/?name=Arjun+Bhatia&background=FFB22C&color=854836',
+        name: "Pankaj Malhotra",
+        profession: "Logistics & Transport",
+        review:
+            "Heavy machinery ke liye reliable listings milna mushkil hota hai. Yahan machine details aur photos accurate hote hain, jo decision lene mein help karta hai.",
+        image: "https://ui-avatars.com/api/?name=Pankaj+Malhotra&background=FFB22C&color=854836",
     },
     {
-        name: 'Meenal Joshi',
-        profession: 'Teacher',
-        review: "Metal braces ki dikkat se bachna ho toh yeh best option hai. Easy to remove, clean and put back. Plus they don't affect my speech while teaching.",
-        image: 'https://ui-avatars.com/api/?name=Meenal+Joshi&background=FFB22C&color=854836',
+        name: "Anjali Deshmukh",
+        profession: "Construction Consultant",
+        review:
+            "Clients ke liye quick machinery sourcing karna easy ho gaya hai. Categories aur filters clearly designed hain — confusion bilkul nahi hota.",
+        image: "https://ui-avatars.com/api/?name=Anjali+Deshmukh&background=FFB22C&color=854836",
     },
     {
-        name: 'Karan Malhotra',
-        profession: 'Photographer',
-        review: 'Camera ke samne smile confident honi chahiye, and these aligners made that possible. Mere shoots ke dauraan kabhi problem nahi hui. Loved the whole journey!',
-        image: 'https://ui-avatars.com/api/?name=Karan+Malhotra&background=FFB22C&color=854836',
+        name: "Vikas Yadav",
+        profession: "Road Work Contractor",
+        review:
+            "Paver finisher aur grader dono time pe deliver hue. On-site coordination bhi smooth rahi. Definitely using this platform again.",
+        image: "https://ui-avatars.com/api/?name=Vikas+Yadav&background=FFB22C&color=854836",
     },
-    {
-        name: 'Pooja Reddy',
-        profession: 'Content Creator',
-        review: 'Instagram reels, vlogs, aur daily videos – sab mein confident smile dikhti hai ab. Pehle hesitation hoti thi but now I feel totally camera-ready!',
-        image: 'https://ui-avatars.com/api/?name=Pooja+Reddy&background=FFB22C&color=854836',
-    },
-    {
-        name: 'Devansh Patel',
-        profession: 'Chartered Accountant',
-        review: 'Numbers ke beech smile bhi zaruri hoti hai. Process was smooth, no clinic rush, and affordable plans made it easy for me to start. Thanks for the amazing support!',
-        image: 'https://ui-avatars.com/api/?name=Devansh+Patel&background=FFB22C&color=854836',
-    },
-]
+];
+
 
 function TestimonialSlider() {
 
@@ -145,7 +142,7 @@ function TestimonialSlider() {
                     >
                         {customerReviews.slice(0, 5).map((review, index) => (
                             <SplideSlide key={index}>
-                                <div className="bg-white h-full shadow-md rounded-xl text-card-foreground max-w-96 select-none p-6 duration-200">
+                                <div className="bg-neutral-800 h-full shadow-md rounded-xl text-card-foreground max-w-96 select-none p-6 duration-200">
                                     <div className="mb-4 flex gap-4">
                                         <span className="relative flex shrink-0 overflow-hidden size-9 rounded-full">
                                             <Image
@@ -156,14 +153,14 @@ function TestimonialSlider() {
                                                 className="w-full h-full object-cover"
                                             />
                                         </span>
-                                        <div className="text-sm">
+                                        <div className="text-sm text-white">
                                             <p className="font-medium">{review.name}</p>
-                                            <p className="text-neutral-600 text-xs">
+                                            <p className="text-neutral-300 text-xs">
                                                 {review.profession}
                                             </p>
                                         </div>
                                     </div>
-                                    <q>{review.review}</q>
+                                    <q className="text-neutral-300">{review.review}</q>
                                 </div>
                             </SplideSlide>
                         ))}
@@ -175,7 +172,7 @@ function TestimonialSlider() {
                     >
                         {customerReviews.slice(5, 10).map((review, index) => (
                             <SplideSlide key={index}>
-                                <div className="bg-white h-full shadow-md rounded-xl text-card-foreground  max-w-96 select-none p-6 duration-200">
+                                <div className="bg-neutral-800 h-full shadow-md rounded-xl text-card-foreground  max-w-96 select-none p-6 duration-200">
                                     <div className="mb-4 flex gap-4">
                                         <span className="relative flex shrink-0 overflow-hidden size-9 rounded-full">
                                             <Image
@@ -186,14 +183,14 @@ function TestimonialSlider() {
                                                 className="w-full h-full object-cover"
                                             />
                                         </span>
-                                        <div className="text-sm">
+                                        <div className="text-sm text-white">
                                             <p className="font-medium">{review.name}</p>
-                                            <p className="text-neutral-600 text-xs">
+                                            <p className="text-neutral-300 text-xs">
                                                 {review.profession}
                                             </p>
                                         </div>
                                     </div>
-                                    <q>{review.review}</q>
+                                    <q className="text-neutral-300">{review.review}</q>
                                 </div>
                             </SplideSlide>
                         ))}

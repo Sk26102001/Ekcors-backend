@@ -26,7 +26,7 @@ export default function ListingsPage() {
   const handleDelete = async () => {
     try {
       await deleteMachinery(item._id); // create API
-      window.location.reload();
+      // window.location.reload();
     } catch (err) {
       console.log(err);
     }
@@ -50,13 +50,13 @@ export default function ListingsPage() {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
         {data.length === 0 ? (
           <div className="aspect-video bg-[#262626] rounded-2xl border-2 border-dashed border-neutral-800 flex items-center justify-center text-zinc-600">
-            No listings yet. Click "List New Machine" to start.
+            No listings yet. Click {`'List New Machine'`} to start.
           </div>
         ) : (
           data.map((item) => (
             <>
-              <div className="rounded-xl p-4 bg-white text-black shadow-md">
-                <Link href={`/machinery/${item.slug || item._id}`}>
+              <div className="rounded-xl p-4 bg-neutral-800 text-white">
+                <Link href={`/listings/${item.slug || item._id}`}>
                   <Image
                     width={500}
                     height={500}
@@ -67,24 +67,19 @@ export default function ListingsPage() {
                   />
                 </Link>
 
-                <Link href={`/machinery/${item.slug || item._id}`} className="inline-block mt-2">
+                <Link href={`/listings/${item.slug || item._id}`} className="inline-block mt-2">
                   <p className="text-lg font-semibold line-clamp-1">{item.title}</p>
-                  <p className="text-xs text-neutral-600 line-clamp-2">{item.description}</p>
-
-                  <p className="flex items-center text-sm gap-1 mt-2 text-neutral-700">
-                    <MapPin className="w-4 h-4 stroke-red-500" />
-                    {item.location?.city}, {item.location?.state}
-                  </p>
+                  <p className="text-xs text-neutral-400 line-clamp-2">{item.description}</p>
 
                   <div className="flex justify-between items-end mt-2">
-                    <p className="text-sm text-neutral-600">
-                      <span className="text-neutral-900 text-lg font-bold">
+                    {/* <p className="text-sm text-neutral-600">
+                      <span className="text-white text-lg font-bold">
                         ₹ {item.pricePerDay || item.pricePerHour || item.pricePerMonth}
                       </span>
                       /{item.pricePerDay ? "day" : item.pricePerHour ? "hour" : "month"}
-                    </p>
+                    </p> */}
 
-                    <span className={`text-xs px-2 py-1 rounded-full ${item.availability ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}`}>
+                    <span className={`text-xs px-2 py-1 rounded-full ${item.availability ? "bg-green-100/10 text-green-700" : "bg-red-100/10 text-red-700"}`}>
                       {item.availability ? "Available" : "Unavailable"}
                     </span>
                   </div>

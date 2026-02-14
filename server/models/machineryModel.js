@@ -62,9 +62,27 @@ const machinerySchema = new mongoose.Schema(
             default: 'Good'
         },
 
-        pricePerHour: Number,
-        pricePerDay: Number,
-        pricePerMonth: Number,
+        baseHourlyRate: {
+            type: Number,
+            required: true
+        },
+
+        minimumBookingHours: {
+            type: Number,
+            default: 4
+        },
+
+        dailyCapPrice: {
+            type: Number
+        },
+
+        weeklyCapPrice: {
+            type: Number
+        },
+
+        monthlyCapPrice: {
+            type: Number
+        },
 
         availability: {
             type: Boolean,

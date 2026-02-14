@@ -104,30 +104,43 @@ exports.deleteUser = catchAsync(async (req, res) => {
     })
 })
 
-// exports.getCurrentUserAds = catchAsync(async (req, res, next) => {
-//     const [products, services, properties, matrimonies] = await Promise.all([
-//         Product.find({ postedBy: req.user.id }),
-//         Service.find({ postedBy: req.user.id }),
-//         Property.find({ postedBy: req.user.id }),
-//         Matrimony.find({ postedBy: req.user.id }),
-//     ]);
+// Driver APIs
 
-//     const ads = [...matrimonies, ...products, ...services, ...properties];
+exports.addDriver = catchAsync(async (req, res) => {
+    const payload = {
+        ...req.body,
+        role: 'driver',
+        addedBy: req.user._id
+    }
 
-//     ads.sort((a, b) => {
-//         const isA_Matrimony = a.constructor.modelName === 'Matrimony';
-//         const isB_Matrimony = b.constructor.modelName === 'Matrimony';
+    console.log(payload)
 
-//         if (isA_Matrimony && !isB_Matrimony) return -1; // Matrimony first
-//         if (!isA_Matrimony && isB_Matrimony) return 1;
+    const driver = await User.create(payload)
+    res.status(201).json({
+        status: "success",
+        message: "Driver added successfully!",
+        data: { driver },
+    });
+})
 
-//         return new Date(b.createdAt) - new Date(a.createdAt);
-//     });
+exports.getAllDrivers = catchAsync(async (req, res) => {
+    const drivers = await User.find({ role: 'driver' })
+    res.status(200).json({
+        status: 'success',
+        results: drivers.length,
+        data: {
+            drivers
+        }
+    })
+})
 
-//     res.status(200).json({
-//         status: 'success',
-//         data: {
-//             ads
-//         }
-//     });
-// });
+exports.getCurrentVendorDriver = catchAsync(async (req, res) => {
+    const drivers = await User.find({ role: 'driver', addedBy: req.user._id })
+
+    res.status(200).json({
+        status: 'success',
+        data: {
+            drivers
+        }
+    })
+})

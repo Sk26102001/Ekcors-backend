@@ -307,7 +307,7 @@ export default function AuthForm({ className, type, ...props }) {
             {...props}
           >
             <div className="flex flex-col items-center gap-1 text-center">
-              <h1 className="text-2xl font-bold text-orangeClr">
+              <h1 className="text-2xl font-bold text-yellowClr">
                 {type === "SignIn"
                   ? "Login to your account"
                   : type === "SignUp"
@@ -325,7 +325,7 @@ export default function AuthForm({ className, type, ...props }) {
                               : ""}
               </h1>
 
-              <p className="text-muted-foreground text-xs text-balance">
+              <p className="text-gray-300 text-xs text-balance">
                 Enter your details below to
                 {type === "SignIn"
                   ? " login to your account"
@@ -343,10 +343,11 @@ export default function AuthForm({ className, type, ...props }) {
             <div className="grid sm:gap-4 gap-3">
               {type === "SignUp" && (
                 <div className="grid gap-2">
-                  <Label htmlFor="fullName">Full Name</Label>
+                  <Label className={'text-white'} htmlFor="fullName">Full Name</Label>
                   <Input
                     id="fullName"
                     type="text"
+                    className={'border-gray-500 text-white'}
                     name="fullName"
                     placeholder="Enter your Full Name"
                     required
@@ -361,21 +362,23 @@ export default function AuthForm({ className, type, ...props }) {
                       } gap-2`}
                   >
                     <div className="grid gap-2">
-                      <Label htmlFor="email">Email</Label>
+                      <Label className={'text-white'} htmlFor="email">Email</Label>
                       <Input
                         id="email"
                         type="email"
                         name="email"
                         placeholder="Enter your email address"
+                        className={'border-gray-500 text-white'}
                         required
                       />
                     </div>
                     {type === "SignUp" && (
                       <div className="grid gap-2">
-                        <Label htmlFor="phone">Mobile</Label>
+                        <Label className={'text-white'} htmlFor="phone">Mobile</Label>
                         <Input
                           id="phone"
                           type="tel"
+                          className={'border-gray-500 text-white'}
                           name="mobile"
                           placeholder="Enter your phone number"
                           maxLength={10}
@@ -393,7 +396,7 @@ export default function AuthForm({ className, type, ...props }) {
                 )}
               {type === "SignUp" && (
                 <div className="flex flex-col gap-4">
-                  <Label>Register as:</Label>
+                  <Label className={'text-white'}>Register as:</Label>
                   <RadioGroup
                     defaultValue="vendor"
                     className={"col-span-2 flex flex-1"}
@@ -401,12 +404,12 @@ export default function AuthForm({ className, type, ...props }) {
                     name="role"
                   >
                     <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="vendor" id="vendor" />
-                      <Label htmlFor="vendor">VENDOR</Label>
+                      <RadioGroupItem value="vendor" id="vendor" className={'data-[state=checked]:bg-yellowClr'} />
+                      <Label className={'text-white'} htmlFor="vendor">VENDOR</Label>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="user" id="user" />
-                      <Label htmlFor="user">INDIVIDUAL</Label>
+                      <RadioGroupItem value="user" id="user" className={'data-[state=checked]:bg-yellowClr'} />
+                      <Label className={'text-white'} htmlFor="user">INDIVIDUAL</Label>
                     </div>
                   </RadioGroup>
                 </div>
@@ -416,31 +419,34 @@ export default function AuthForm({ className, type, ...props }) {
                   {registerType === "vendor" ? (
                     <>
                       <div className="grid gap-2">
-                        <Label htmlFor="companyName">Company name</Label>
+                        <Label className={'text-white'} htmlFor="companyName">Company name</Label>
                         <Input
                           id="companyName"
                           type="text"
                           name="companyName"
+                          className={'border-gray-500 text-white'}
                           placeholder="Enter your Company name"
                           required
                         />
                       </div>
                       <div className="grid gap-2 relative">
-                        <Label htmlFor="gst" className={'gap-1'}>GST <span className="font-normal text-xs">(optional)</span></Label>
+                        <Label className={'text-white gap-1'} htmlFor="gst">GST <span className="font-normal text-xs">(optional)</span></Label>
                         <Input
                           id="gst"
                           type="text"
                           name="gst"
+                          className={'border-gray-500 text-white'}
                           placeholder="Enter your GST"
                           required
                         />
                       </div>
                       <div className="grid sm:col-span-2 gap-2">
-                        <Label htmlFor="companyAddress">Company address</Label>
+                        <Label className={'text-white'} htmlFor="companyAddress">Company address</Label>
                         <Input
                           id="companyAddress"
                           type="text"
                           name="companyAddress"
+                          className={'border-gray-500 text-white'}
                           // value={location.city}
                           placeholder="Enter your city"
                           required
@@ -449,9 +455,9 @@ export default function AuthForm({ className, type, ...props }) {
                     </>
                   ) : (
                     <div className="grid gap-2 sm:col-span-2">
-                      <Label htmlFor="profession">Profession</Label>
+                      <Label className={'text-white'} htmlFor="profession">Profession</Label>
                       <Select name="profession" required>
-                        <SelectTrigger id="profession" className="w-full">
+                        <SelectTrigger id="profession" className="w-full border-gray-500">
                           <SelectValue placeholder="Select Profession" />
                         </SelectTrigger>
                         <SelectContent>
@@ -474,11 +480,12 @@ export default function AuthForm({ className, type, ...props }) {
               {type === "SignUp" && (
                 <div className="grid sm:grid-cols-2 gap-3">
                   <div className="grid gap-2 relative">
-                    <Label htmlFor="pincode">Pincode</Label>
+                    <Label className={'text-white'} htmlFor="pincode">Pincode</Label>
                     <Input
                       id="pincode"
                       type="number"
                       name="pincode"
+                      className={'border-gray-500 text-white'}
                       onInput={(e) => {
                         e.target.value = e.target.value.slice(0, 6)
                         handlePincodeChange(e)
@@ -491,23 +498,25 @@ export default function AuthForm({ className, type, ...props }) {
                     )}
                   </div>
                   <div className="grid gap-2 relative">
-                    <Label htmlFor="state">State</Label>
+                    <Label className={'text-white'} htmlFor="state">State</Label>
                     <Input
                       id="state"
                       type="text"
                       name="state"
                       value={location.state}
+                      className={'border-gray-500 text-white'}
                       readOnly
                       placeholder="Enter your State"
                       required
                     />
                   </div>
                   <div className="grid gap-2">
-                    <Label htmlFor="city">City</Label>
+                    <Label className={'text-white'} htmlFor="city">City</Label>
                     <Input
                       id="city"
                       type="text"
                       name="city"
+                      className={'border-gray-500 text-white'}
                       value={location.city}
                       readOnly
                       placeholder="Enter your city"
@@ -519,11 +528,11 @@ export default function AuthForm({ className, type, ...props }) {
               {(type === "SignIn" || type === "SignUp" || type === "Reset") && (
                 <div className="grid gap-2 relative">
                   <div className="flex items-center">
-                    <Label htmlFor="password">Password</Label>
+                    <Label className={'text-white'} htmlFor="password">Password</Label>
                     {type === "SignIn" && (
                       <Link
                         href="/forgot-password"
-                        className="ml-auto text-xs text-gray-600 hover:text-gray-800 underline-offset-4 hover:underline"
+                        className="ml-auto text-xs text-gray-200 underline-offset-4 hover:underline"
                         tabIndex={-1}
                       >
                         Forgot your password?
@@ -534,7 +543,8 @@ export default function AuthForm({ className, type, ...props }) {
                     id="password"
                     name="password"
                     type={showPassword ? "text" : "password"}
-                    // pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                    // pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"                        
+                    className={'border-gray-500 text-white'}
                     title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
                     placeholder="Enter your password"
                     required
@@ -557,7 +567,7 @@ export default function AuthForm({ className, type, ...props }) {
               )}
               {type === "Reset" && (
                 <div className="grid gap-2 relative">
-                  <Label htmlFor="confirmPassword">Confirm Password</Label>
+                  <Label className={'text-white'} htmlFor="confirmPassword">Confirm Password</Label>
                   <Input
                     id="confirmPassword"
                     name="confirmPassword"
@@ -583,31 +593,31 @@ export default function AuthForm({ className, type, ...props }) {
               )}
               {/* {type === "SignUp" && (
                 <div className="space-y-4">
-                  <Label>Where you heared about us?</Label>
+                  <Label className={'text-white'}>Where you heared about us?</Label>
                   <RadioGroup className="flex flex-wrap sm:gap-4">
                     <div className="flex items-center gap-2">
                       <RadioGroupItem value="social" id="social" />
-                      <Label htmlFor="social">Social Media</Label>
+                      <Label className={'text-white'} htmlFor="social">Social Media</Label>
                     </div>
 
                     <div className="flex items-center gap-2">
                       <RadioGroupItem value="google" id="google" />
-                      <Label htmlFor="google">Google Search</Label>
+                      <Label className={'text-white'} htmlFor="google">Google Search</Label>
                     </div>
 
                     <div className="flex items-center gap-2">
                       <RadioGroupItem value="ads" id="ads" />
-                      <Label htmlFor="ads">Online Ads</Label>
+                      <Label className={'text-white'} htmlFor="ads">Online Ads</Label>
                     </div>
 
                     <div className="flex items-center gap-2">
                       <RadioGroupItem value="referral" id="referral" />
-                      <Label htmlFor="referral">Friend / Referral</Label>
+                      <Label className={'text-white'} htmlFor="referral">Friend / Referral</Label>
                     </div>
 
                     <div className="flex items-center gap-2">
                       <RadioGroupItem value="other" id="other" />
-                      <Label htmlFor="other">Other</Label>
+                      <Label className={'text-white'} htmlFor="other">Other</Label>
                     </div>
                   </RadioGroup>
                 </div>
@@ -620,7 +630,7 @@ export default function AuthForm({ className, type, ...props }) {
                     className="accent-orangeClr"
                     required
                   />
-                  <Label htmlFor="terms" className={"text-xs"}>
+                  <Label className={'text-white text-xs'} htmlFor="terms">
                     I agree to the terms and privacy policy.
                   </Label>
                 </div>
@@ -628,13 +638,14 @@ export default function AuthForm({ className, type, ...props }) {
 
               {type === "SignInOtp" && (
                 <div className="grid gap-2">
-                  <Label htmlFor="mobile">Mobile Number</Label>
+                  <Label className={'text-white'} htmlFor="mobile">Mobile Number</Label>
                   <Input
                     id="mobile"
                     name="mobile"
                     //   type="tel"
                     placeholder="Enter mobile number"
                     //   maxLength={10}
+                    className={'border-gray-500 text-white'}
                     type="text"
                     inputMode="numeric"
                     maxLength={10}
@@ -662,7 +673,7 @@ export default function AuthForm({ className, type, ...props }) {
                         maxLength="6"
                         onChange={(e) => handleInputChange(e, index)}
                         onKeyDown={(e) => handleKeyDown(e, index)}
-                        className="w-10 h-10 text-center bg-gray-200 rounded-xl text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-orangeClr duration-200"
+                        className="w-10 h-10 text-center bg-transparent border border-neutral-500 text-white rounded-xl text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-orangeClr duration-200"
                       />
                     ))}
                   </div>
@@ -692,14 +703,14 @@ export default function AuthForm({ className, type, ...props }) {
               </Button>
 
               {type === "SignIn" && (
-                <Button asChild variant={'outline'} className={'gap-1 text-black'}>
+                <Button asChild variant={'outline'} className={'gap-1 text-white'}>
                   <Link href="/sign-in-otp">
                     Login via Mobile <Smartphone size={16} />
                   </Link>
                 </Button>
               )}
               {type === "SignInOtp" && (
-                <Button asChild variant={'outline'} className={'gap-1 text-black'}>
+                <Button asChild variant={'outline'} className={'gap-1 text-white'}>
                   <Link href="/sign-in">
                     Login via Email <Mail size={16} />
                   </Link>
@@ -716,7 +727,7 @@ export default function AuthForm({ className, type, ...props }) {
                     <button
                       type="button"
                       onClick={handleResendOTP}
-                      className="w-full text-sm cursor-pointer font-semibold text-orangeClr"
+                      className="w-full text-sm cursor-pointer font-semibold text-yellowClr"
                     >
                       Resend OTP
                     </button>
@@ -728,7 +739,7 @@ export default function AuthForm({ className, type, ...props }) {
 
           <div className="grid gap-6 mt-6">
             <div className="flex items-center justify-center gap-2 text-sm">
-              <div className="text-gray-600">
+              <div className="text-gray-300 font-light">
                 {type === "SignIn"
                   ? "Don't have an account?"
                   : type === "SignUp"
@@ -743,7 +754,7 @@ export default function AuthForm({ className, type, ...props }) {
                       ? "/sign-in"
                       : "/sign-in"
                 }
-                className="underline underline-offset-4"
+                className="underline underline-offset-4 text-white"
               >
                 {type === "SignIn"
                   ? "Sign Up"

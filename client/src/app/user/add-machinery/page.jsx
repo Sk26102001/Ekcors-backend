@@ -11,6 +11,7 @@ import {
     CheckCircle2
 } from "lucide-react";
 import { addMachinery } from "@/api/machineryApis";
+import { toast } from "sonner";
 
 export default function AddMachineryPage() {
     const [files, setFiles] = useState([]);
@@ -25,9 +26,10 @@ export default function AddMachineryPage() {
         fuelType: "Diesel",
         transmission: "Hydraulic",
         condition: "Good",
-        pricePerHour: "",
-        pricePerDay: "",
-        pricePerMonth: "",
+        baseHourlyRate: "",
+        dailyCapPrice: "",
+        weeklyCapPrice: "",
+        monthlyCapPrice: "",
         availability: true,
         images: [],
         address: "",
@@ -64,6 +66,9 @@ export default function AddMachineryPage() {
 
         try {
             const res = await addMachinery(fd); // SEND FORMDATA
+            if (res.status) {
+                toast.success(res.message);
+            }
             console.log(res);
         } catch (error) {
             console.log(error);
@@ -107,9 +112,10 @@ export default function AddMachineryPage() {
                 {/* PRICING */}
                 <SectionHeading title="Pricing" />
                 <div className="grid md:grid-cols-3 gap-6">
-                    <Input label="Price / Hour" icon={<IndianRupee size={16} />} value={form.pricePerHour} onChange={(v) => handleChange("pricePerHour", v)} />
-                    <Input label="Price / Day" icon={<IndianRupee size={16} />} value={form.pricePerDay} onChange={(v) => handleChange("pricePerDay", v)} />
-                    <Input label="Price / Month" icon={<IndianRupee size={16} />} value={form.pricePerMonth} onChange={(v) => handleChange("pricePerMonth", v)} />
+                    <Input label="Hourly Rate" icon={<IndianRupee size={16} />} value={form.baseHourlyRate} onChange={(v) => handleChange("baseHourlyRate", v)} />
+                    <Input label="Daily Price" icon={<IndianRupee size={16} />} value={form.dailyCapPrice} onChange={(v) => handleChange("dailyCapPrice", v)} />
+                    <Input label="Weekly Price" icon={<IndianRupee size={16} />} value={form.weeklyCapPrice} onChange={(v) => handleChange("weeklyCapPrice", v)} />
+                    <Input label="Monthly Price" icon={<IndianRupee size={16} />} value={form.monthlyCapPrice} onChange={(v) => handleChange("monthlyCapPrice", v)} />
                 </div>
 
                 {/* IMAGES */}

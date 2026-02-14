@@ -114,7 +114,8 @@
 
 @theme {
   --breakpoint-md: 48.5rem;
-  --color-yellowClr: #FFB22C;
+  /* --color-yellowClr: #FFB22C; */
+  --color-yellowClr: #fed700;
   --color-brownClr: #854836;
   --color-bgClr: whitesmoke;
 }

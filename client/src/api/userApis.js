@@ -10,4 +10,9 @@ export const updateCurrentUser = async (data) => axiosInstance.patch('/users/me'
 export const uploadUserImage = async (data) => axiosInstance.post('/users/me/upload-image', data);
 export const updatePassword = async (data) => axiosInstance.post('/users/update-password', data);
 
+export const addDriver = async (data) => axiosInstance.post('/users/add-driver', data);
+export const getCurrentVendorDriver = async () => axiosInstance.get('/users/vendor-drivers');
+
+export const bookMachinery = async (data) => axiosInstance.post('/bookings', data);
+
 export const logoutUser = async () => axiosInstance.post('/users/logout');

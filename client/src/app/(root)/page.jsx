@@ -1,10 +1,8 @@
 'use client'
 
-import CategorySlider from "@/components/CategorySlider";
+import { useMachinery } from "@/context/useMachinery";
 import Cta from "@/components/Cta";
 import HeroSection from "@/components/HeroSection";
-import LocationSlider from "@/components/LocationSlider";
-import ProductSlider from "@/components/ProductSlider";
 import Stats from "@/components/Stats";
 import TestimonialSlider from "@/components/TestimonialSlider";
 import { Button } from "@/components/ui/button";
@@ -21,7 +19,6 @@ import { ArrowDownAZ, ArrowDownNarrowWide, ArrowDownWideNarrow, ArrowRight, Arro
 import ProductCard from "@/components/ProductCard";
 import Image from "next/image";
 import Link from "next/link";
-import { useMachinery } from "@/context/useMachinery";
 
 export default function Home() {
   const { machinery } = useMachinery()
@@ -30,31 +27,42 @@ export default function Home() {
     <>
       <HeroSection />
 
-      <section className="bg-neutral-800 md:px-6 px-4">
+      <section className="bg-neutral-700 md:px-6 px-4">
         <div className="md:py-12 sm:py-8 py-6 max-w-6xl mx-auto">
-          <p className="font-semibold text-white sm:text-2xl text-xl">Categories</p>
-          <div className="grid md:grid-cols-5 sm:grid-cols-4 grid-cols-3 sm:gap-4 gap-2 sm:mt-6 mt-4">
-            {Array.from({ length: 9 }, (_, index) => (
-              <Link href="#" key={index} className="border border-neutral-600 hover:bg-white/5 duration-200 rounded-lg p-4 text-white text-center group">
-                <Image src="/images/categories/bulldozer.png" width={500} height={500} className="sm:max-h-32 max-h-28 object-contain group-hover:scale-110 duration-300" alt="Bulldozer" />
-                <p>Bulldozers</p>
-              </Link>
-            ))}
-            <Link href="#" className="sm:col-span-1 col-span-3 border border-neutral-600 hover:bg-white/5 duration-200 flex justify-center items-center rounded-lg p-4 text-white">
-              <p className="flex items-center">Explore all <ChevronRight className="w-5 h-5" /></p>
+          <h2 className="font-heading md:text-4xl text-3xl text-yellowClr text-center mb-2">Categories</h2>
+          <div className="grid md:grid-cols-5 sm:grid-cols-4 grid-cols-2 sm:gap-4 gap-2 sm:mt-6 mt-4">
+            <Link href="#" className="flex flex-col justify-between gap-4 border border-neutral-600 hover:bg-white/5 duration-200 rounded-lg p-4 text-white text-center group">
+              <Image src="/images/categories/earthmoving.png" width={500} height={500} className="sm:max-h-32 max-h-28 object-contain group-hover:scale-110 duration-300" alt="Bulldozer" />
+              <p>Earthmoving</p>
             </Link>
+            <Link href="#" className="flex flex-col justify-between gap-4 border border-neutral-600 hover:bg-white/5 duration-200 rounded-lg p-4 text-white text-center group">
+              <Image src="/images/categories/concrete.png" width={500} height={500} className="sm:max-h-32 max-h-28 object-contain group-hover:scale-110 duration-300" alt="Bulldozer" />
+              <p>Concrete</p>
+            </Link>
+            <Link href="#" className="flex flex-col justify-between gap-4 border border-neutral-600 hover:bg-white/5 duration-200 rounded-lg p-4 text-white text-center group">
+              <Image src="/images/categories/lifting.png" width={500} height={500} className="sm:max-h-32 max-h-28 object-contain group-hover:scale-110 duration-300" alt="Bulldozer" />
+              <p>Lifting</p>
+            </Link>
+            <Link href="#" className="flex flex-col justify-between gap-4 border border-neutral-600 hover:bg-white/5 duration-200 rounded-lg p-4 text-white text-center group">
+              <Image src="/images/categories/road.png" width={500} height={500} className="sm:max-h-32 max-h-28 object-contain group-hover:scale-110 duration-300" alt="Bulldozer" />
+              <p>Road</p>
+            </Link>
+            <Link href="#" className="flex flex-col justify-between gap-4 border border-neutral-600 hover:bg-white/5 duration-200 rounded-lg p-4 text-white text-center group">
+              <Image src="/images/categories/power.png" width={500} height={500} className="sm:max-h-32 max-h-28 object-contain group-hover:scale-110 duration-300" alt="Bulldozer" />
+              <p>Power Equipment</p>
+            </Link>
+            {/* <Link href="#" className="sm:col-span-5 col-span-3 border border-neutral-600 hover:bg-white/5 duration-200 flex justify-center items-center rounded-lg p-4 text-white">
+              <p className="flex items-center">Explore all <ChevronRight className="w-5 h-5" /></p>
+            </Link> */}
           </div>
         </div>
       </section>
 
       <section className="bg-neutral-700 md:px-6 px-4">
         <div className="md:py-12 sm:py-8 py-6 max-w-6xl mx-auto">
-          <div className="flex sm:flex-row flex-col justify-between gap-2 sticky top-[72px] py-4 bg-neutral-700">
-            <div>
-              <p className="font-semibold text-white sm:text-2xl text-xl">Machineries</p>
-              <p className="text-xs text-neutral-200">Showing 10 of 1,000</p>
-            </div>
-            <div className="flex gap-2">
+          <div className="flex sm:flex-row flex-col justify-between gap-2 py-4 bg-neutral-700">
+            <h2 className="font-heading md:text-4xl text-3xl text-yellowClr text-center flex-1 mb-2">Machineries</h2>
+            {/* <div className="flex gap-2">
               <Input type="text" className={'bg-white focus-visible:ring-0 focus-visible:border-yellowClr'} placeholder="Search" />
               <DropdownMenu modal={false}>
                 <DropdownMenuTrigger asChild>
@@ -102,7 +110,7 @@ export default function Home() {
                 </DropdownMenuContent>
               </DropdownMenu>
               <Button><SlidersHorizontal className="w-4 h-4" /></Button>
-            </div>
+            </div> */}
           </div>
           <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 sm:gap-4 gap-3">
             {machinery?.slice(0, 12)?.map((machinery, index) => (
@@ -143,7 +151,6 @@ export default function Home() {
       <Stats />
       <section>
         <div className="md:py-12 sm:py-8 py-6 md:px-6 px-4 bg-neutral-700">
-          <h6 className="font-heading md:text-4xl text-3xl text-yellowClr text-center mb-2">How it Works</h6>
           <p className="text-center text-neutral-300 text-sm max-w-3xl mx-auto">Finding and renting the right machine is simple. Browse verified equipment, book instantly with transparent pricing, and get it delivered to your site with full support so you can focus on getting the job done.</p>
           <div className="md:mt-8 mt-6 grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 max-w-5xl mx-auto">
             <div className="p-4 bg-yellowClr/20 border border-yellowClr/40 rounded-xl shadow-md">
@@ -172,8 +179,12 @@ export default function Home() {
             <h6 className="md:text-5xl sm:text-4xl text-3xl font-heading text-yellowClr">Own Heavy Machinery?</h6>
             <p className="sm:text-lg text-sm font-medium max-w-2xl mx-auto text-neutral-300">Put your machines to work and start earning today. Join a growing network of trusted owners already generating consistent income on our platform.</p>
           </div>
-          <Button className={'sm:p-6 p-5 rounded-xl sm:text-lg text-neutral-800'}><Plus /> List Your Machine</Button>
-          <div className="max-w-4xl mx-auto flex justify-between">
+          <Button asChild className={'sm:p-6 p-5 rounded-xl sm:text-lg text-neutral-800'}>
+            <Link href="/user/add-machinery">
+              <Plus /> List Your Machine
+            </Link>
+          </Button>
+          {/* <div className="max-w-4xl mx-auto flex justify-between">
             <div className="flex-1">
               <p className="sm:text-4xl text-3xl font-bold">00</p>
               <p className="sm:text-base text-xs text-neutral-700">Revenue Generated</p>
@@ -186,7 +197,7 @@ export default function Home() {
               <p className="sm:text-4xl text-3xl font-bold">95%</p>
               <p className="sm:text-base text-xs text-neutral-700">Utilization Rate</p>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
     </>

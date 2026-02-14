@@ -39,24 +39,23 @@ const userSchema = new mongoose.Schema(
         drivingLicenseNumber: {
             type: String,
         },
+        aadharNumber: {
+            type: String,
+        },
         profession: {
             type: String,
         },
         pincode: {
             type: String,
-            required: [true, 'Please add a pincode'],
         },
         city: {
             type: String,
-            required: [true, 'Please add a city'],
         },
         state: {
             type: String,
-            required: [true, 'Please add a state'],
         },
         country: {
             type: String,
-            required: [true, 'Please add a country'],
             default: 'India',
         },
         role: {
@@ -81,6 +80,10 @@ const userSchema = new mongoose.Schema(
         otpExpiry: {
             type: Date,
             select: false,
+        },
+        addedBy: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User',
         },
         passwordResetToken: String,
         passwordResetExpires: Date,

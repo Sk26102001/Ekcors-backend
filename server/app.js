@@ -11,6 +11,7 @@ const AppError = require('./utils/appError')
 const globalErrorHandler = require('./controllers/errorController')
 const userRoutes = require('./routes/userRoutes')
 const machineryRoutes = require('./routes/machineryRoutes')
+const bookingRoutes = require('./routes/bookingRoutes')
 
 const app = express()
 
@@ -49,16 +50,13 @@ app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ limit: "10mb", extended: true }));
 app.use(cookieParser())
 
-app.get('/', (req, res, next) => {
-    res.json({
-        status: 'running',
-        message: 'Hello World! Ekcors API is running!',
-        time: new Date().toLocaleString('en-IN'),
-    })
-})
+app.get("/", (req, res) => {
+    res.sendStatus(200);
+});
 
 app.use('/api/v1/users', userRoutes)
 app.use('/api/v1/machinery', machineryRoutes)
+app.use('/api/v1/bookings', bookingRoutes)
 
 app.all('/*catchAll', (req, res, next) => {
     next(new AppError(`Route '${req.originalUrl}' not found!`, 404))

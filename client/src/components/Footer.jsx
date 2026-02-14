@@ -1,10 +1,6 @@
-import { Facebook, Instagram, Linkedin } from "lucide-react"
-import Logo from "./logo"
 import Link from "next/link"
 import Image from "next/image"
-import { Button } from "./ui/button"
-import { Input } from "./ui/input"
-import GradientText from "./GradientText"
+import { Facebook, Instagram, Linkedin } from "lucide-react"
 
 function Footer() {
     return (
@@ -32,7 +28,7 @@ function Footer() {
                                 </li>
                                 <li className="font-medium hover:text-gray-800">
                                     <Link href="#">
-                                        <Image src="/svg/x.svg" alt="X" width={20} height={20} />
+                                        <Image src="/svg/x.svg" alt="X" width={18} height={18} />
                                     </Link>
                                 </li>
                             </ul>
@@ -40,63 +36,34 @@ function Footer() {
                         <div data-orientation="horizontal" role="none"
                             className="shrink-0 bg-border h-px w-full col-span-2 md:my-6 sm:my-4 mt-2 lg:hidden"></div>
                         <div>
-                            <h3 className="mb-4 font-bold text-white">Product</h3>
+                            <h3 className="mb-4 font-bold text-white">Category</h3>
                             <ul className="space-y-2 text-neutral-300 [&_a]:font-medium [&_a]:text-sm [&_a]:hover:text-yellowClr">
-                                <li><a href="#">Overview</a></li>
-                                <li><a href="#">Pricing</a></li>
-                                <li><a href="#">Marketplace</a></li>
-                                <li><a href="#">Features</a></li>
-                                <li><a href="#">Integrations</a></li>
-                                <li><a href="#">Pricing</a></li>
+                                <li><a href="#">Earthmoving</a></li>
+                                <li><a href="#">Concrete mixers</a></li>
+                                <li><a href="#">Lifting vehicles</a></li>
+                                <li><a href="#">Road vehicles</a></li>
+                                <li><a href="#">Power equipments</a></li>
                             </ul>
                         </div>
                         <div>
-                            <h3 className="mb-4 font-bold text-white">Company</h3>
+                            <h3 className="mb-4 font-bold text-white">Quick Links</h3>
                             <ul className="space-y-2 text-neutral-300 [&_a]:font-medium [&_a]:text-sm [&_a]:hover:text-yellowClr">
+                                <li><a href="#">All Listings</a></li>
                                 <li><a href="#">About</a></li>
-                                <li><a href="#">Team</a></li>
-                                <li><a href="#">Blog</a></li>
-                                <li><a href="#">Careers</a></li>
                                 <li><a href="#">Contact</a></li>
-                                <li><a href="#">Privacy</a></li>
                             </ul>
                         </div>
                         <div>
-                            <h3 className="mb-4 font-bold text-white">Resources</h3>
+                            <h3 className="mb-4 font-bold text-white">Support</h3>
                             <ul className="space-y-2 text-neutral-300 [&_a]:font-medium [&_a]:text-sm [&_a]:hover:text-yellowClr">
-                                <li><a href="#">Help</a></li>
-                                <li><a href="#">Sales</a></li>
-                                <li><a href="#">Advertise</a></li>
+                                <li><a href="/terms-and-conditions">Terms & Conditions</a></li>
+                                <li><a href="/privacy-policy">Privacy Policy</a></li>
+                                <li><a href="/refund-policy">Refund Policy</a></li>
                             </ul>
-                        </div>
-                    </div>
-                    {/* <div data-orientation="horizontal" role="none" className="shrink-0 bg-neutral-700 h-px w-full my-6 md:my-8"></div> */}
-                    <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-center md:mt-12 sm:mt-10 mt-8">
-                        <div>
-                            <GradientText
-                                colors={["#FFE52A", "#FF9D00", "#FFE52A", "#FF9D00", "#FFE52A"]}
-                                animationSpeed={3}
-                                showBorder={false}
-                                className="rounded-none"
-                            >
-                                <p className="mb-2 text-3xl font-semibold lg:text-4xl">Join our newsletter</p>
-                            </GradientText>
-                            <p className="text-neutral-300 font-light">Get exclusive news, features, and updates.</p>
-                        </div>
-                        <div className="flex w-full max-w-sm items-center space-x-2">
-                            <Input type="email" name="email" placeholder="Email" className={'focus-visible:ring-yellowClr/20 focus-visible:border-yellowClr/80'} />
-                            <Button
-                                type="submit">
-                                Subscribe
-                            </Button>
                         </div>
                     </div>
                     <div data-orientation="horizontal" role="none" className="shrink-0 bg-neutral-700 h-px w-full my-6 md:my-8"></div>
-                    <div className="flex flex-col justify-between gap-4 text-sm font-medium text-zinc-600 md:flex-row md:items-center">
-                        <ul className="flex gap-4">
-                            <li className="underline text-neutral-400 hover:text-neutral-300"><Link href="#"> Terms and Conditions</Link></li>
-                            <li className="underline text-neutral-400 hover:text-neutral-300"><Link href="#"> Privacy Policy</Link></li>
-                        </ul>
+                    <div className="flex flex-col justify-center text-sm font-medium text-zinc-600 md:flex-row md:items-center">
                         <p className="text-neutral-400">© 2026 EKCORS | All rights reserved.</p>
                     </div>
                 </div>

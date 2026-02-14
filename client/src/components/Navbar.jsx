@@ -323,6 +323,7 @@ export default function Navbar() {
   }
 
   return (
+    <>
     <header className="px-4 md:px-6 fixed top-0 left-0 right-0 z-50 bg-neutral-800">
       <div className="flex h-18 items-center justify-between gap-4">
 
@@ -354,7 +355,7 @@ export default function Navbar() {
         <div className="flex flex-1 items-center justify-end gap-2">
 
           {user && <Button asChild className={'rounded-full'}>
-            <Link href="#"><CirclePlus size={16} /> List Machine</Link>
+            <Link href="/user/add-machinery"><CirclePlus size={16} /> List Machine</Link>
           </Button>}
 
           {user
@@ -564,5 +565,6 @@ export default function Navbar() {
         </div>
       </div>
     </header>
+    </>
   );
 }

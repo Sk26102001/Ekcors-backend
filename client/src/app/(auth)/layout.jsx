@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
                             </h1>
                         </div>
                     </div>
-                    <div className="flex flex-col gap-4 p-6 md:p-10">
+                    <div className="flex flex-col gap-4 p-6 md:p-10 bg-neutral-800">
                         {children}
                     </div>
                 </div>

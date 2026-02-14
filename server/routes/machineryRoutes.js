@@ -10,12 +10,22 @@ machineryRouter
     .get('/me', authController.protect, machineryController.getCurrentUserMachinery)
 
 machineryRouter
-    .get('/', machineryController.getAllMachinery)
-    .get('/:id', machineryController.getMachinery)
+    .route('/')
+    .get(machineryController.getAllMachinery)
+    .post(
+        authController.protect,
+        uploadMachineryImages.array('images'),
+        machineryController.addMachinery
+    );
 
 machineryRouter
-    .post('/', authController.protect, uploadMachineryImages.array('images'), machineryController.addMachinery)
-    // .delete('/:id', authController.protect, authController.restrictTo('admin'), machineryController.deleteMachinery)
-    .patch('/:id', authController.protect, authController.restrictTo('admin'), machineryController.editMachinery)
+    .route('/:id')
+    .get(machineryController.getMachinery)
+    .patch(
+        authController.protect,
+        authController.restrictTo('admin'),
+        machineryController.editMachinery
+    );
+
 
 module.exports = machineryRouter

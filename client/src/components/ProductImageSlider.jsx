@@ -11,8 +11,6 @@ export default function ProductImageSilder({ images = [] }) {
     const mainRef = useRef(null)
     const thumbsRef = useRef(null)
 
-    console.log(images)
-
     useEffect(() => {
         if (mainRef.current && thumbsRef.current) {
             const main = mainRef.current.splide
@@ -37,7 +35,7 @@ export default function ProductImageSilder({ images = [] }) {
                             height: "420px",
                         },
                         640: {
-                            height: "360px",
+                            height: "320px",
                         },
                     }
                 }}

@@ -7,8 +7,8 @@ import '@/lib/leafletIconFix';
 export default function Map() {
     return (
         <MapContainer
-            center={[28.6139, 77.209]}
-            zoom={13}
+            center={[25.3176, 82.9739]}
+            zoom={15}
             scrollWheelZoom={true}
             style={{ height: '320px', width: '100%', zIndex: 0, borderRadius: '10px' }}
         >
@@ -17,7 +17,7 @@ export default function Map() {
                 url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
             />
 
-            <Marker position={[28.6139, 77.209]}>
+            <Marker position={[25.3176, 82.9739]}>
                 <Popup>New Delhi</Popup>
             </Marker>
         </MapContainer>

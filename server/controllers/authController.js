@@ -28,6 +28,7 @@ const createSendToken = (user, statusCode, res) => {
     user.password = undefined
 
     res.status(statusCode).json({
+        user,
         status: 'success',
         token,
     })
@@ -161,8 +162,6 @@ exports.protect = catchAsync(async (req, res, next) => {
         token = req.cookies.jwt;
     }
 
-    console.log(req.cookies.jwt)
-
     if (!token) {
         return next(new AppError('You are not logged in! Please log in to get access.', 401));
     }
@@ -172,6 +171,7 @@ exports.protect = catchAsync(async (req, res, next) => {
     const currentUser = await User.findById(decoded.id);
 
     if (!currentUser) {
+        res.clearCookie('jwt', cookieOptions);
         return next(new AppError('User no longer exists.', 401));
     }
     req.user = currentUser;

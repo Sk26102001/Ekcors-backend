@@ -2,35 +2,19 @@
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import { AutoScroll } from '@splidejs/splide-extension-auto-scroll';
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Button } from "./ui/button"
-import { Badge } from "@/components/ui/badge"
-import RotatingText from "./RotatingText"
-import { Search } from "lucide-react"
-import LogoLoop from "./LogoLoop"
-import {
-    Select,
-    SelectContent,
-    SelectGroup,
-    SelectItem,
-    SelectLabel,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select"
 import Image from "next/image";
 
-const brandLogos = [
-    { src: "/images/brands/ace.jpg", alt: "Ace" },
-    { src: "/images/brands/ashok-leyland.png", alt: "Ashok Leyland" },
-    { src: "/images/brands/eicher.png", alt: "Eicher" },
-    { src: "/images/brands/jcb.png", alt: "JCB" },
-    { src: "/images/brands/kirloskar.jpg", alt: "Kirloskar" },
-    { src: "/images/brands/L&T.png", alt: "L&T" },
-    { src: "/images/brands/mahindra.png", alt: "Mahindra" },
-    { src: "/images/brands/tata.jpg", alt: "Tata" },
-    { src: "/images/brands/voltas.png", alt: "Voltas" },
-];
+const sliderImages = [
+    { src: "/images/jcb.jpeg", alt: "JCB" },
+    { src: "/images/crane.jpeg", alt: "Crane" },
+    { src: "/images/tipper.jpeg", alt: "Tipper" },
+    { src: "/images/generator.jpeg", alt: "Generator" },
+    { src: "/images/bulldozer.jpeg", alt: "Bulldozer" },
+    { src: "/images/dump.jpeg", alt: "Dump truck" },
+    { src: "/images/jcb2.jpg", alt: "JCB" },
+    { src: "/images/roller.jpeg", alt: "Road Roller" },
+    { src: "/images/mixer.jpeg", alt: "Construction mixer" },
+]
 
 function HeroSection() {
     return (
@@ -72,15 +56,10 @@ function HeroSection() {
                         }}
                         extensions={{ AutoScroll }}
                     >
-                        {Array.from({ length: 10 }).map((_, index) => (
-                            <>
-                                <SplideSlide key={index}>
-                                    <Image src="/images/jcb.jpeg" alt="hero" className="h-full max-h-[337px] w-fit object-contain" width={1000} height={1000} />
-                                </SplideSlide>
-                                <SplideSlide key={index}>
-                                    <Image src="/images/jcb2.jpg" alt="hero" className="h-full max-h-[337px] w-fit object-contain" width={1000} height={1000} />
-                                </SplideSlide>
-                            </>
+                        {sliderImages.map((image, index) => (
+                            <SplideSlide key={index}>
+                                <Image src={image.src} alt={image.alt} className="h-full max-h-[337px] w-fit object-contain" width={1000} height={1000} />
+                            </SplideSlide>
                         ))}
                     </Splide>
                     <div className="h-full absolute top-0 sm:left-[15%] left-0 z-10">

@@ -1,5 +1,7 @@
 'use client'
 
+import { useState } from "react";
+import { useMachinery } from "@/context/useMachinery";
 import {
     Breadcrumb,
     BreadcrumbItem,
@@ -38,7 +40,6 @@ import { Button } from "@/components/ui/button"
 import { ArrowDownAZ, ArrowDownNarrowWide, ArrowDownWideNarrow, ArrowUpAZ, ArrowUpDown, ClockArrowDown, ClockArrowUp, SlidersHorizontal, X } from "lucide-react"
 import ProductCard from "@/components/ProductCard";
 import { Slider } from "@/components/ui/slider";
-import { useState } from "react";
 
 // export const metadata = {
 //     title: 'Listings',
@@ -46,7 +47,9 @@ import { useState } from "react";
 // }
 
 function page() {
+    const { machinery } = useMachinery()
     const [priceRange, setPriceRange] = useState([0, 100]);
+
 
     return (
         <>
@@ -68,7 +71,7 @@ function page() {
                     </Breadcrumb>
                 </div>
             </section>
-            <section className="bg-neutral-800 md:px-6 px-4">
+            <section className="bg-neutral-700 md:px-6 px-4">
                 <div className="grid lg:grid-cols-5 md:grid-cols-4 sm:gap-4 gap-2">
                     <div className="md:block hidden h-fit top-16 sticky border-r border-neutral-700 py-6 pe-4">
                         <div className="flex justify-between items-start mb-2">
@@ -156,7 +159,7 @@ function page() {
                         </div>
                     </div>
                     <div className="lg:col-span-4 md:col-span-3 py-6">
-                        <div className="bg-neutral-800 pb-4 flex sm:flex-row flex-col justify-between sm:items-start gap-2 md:static sticky top-[72px]">
+                        <div className="bg-neutral-700 pb-4 flex sm:flex-row flex-col justify-between sm:items-start gap-2 md:static sticky top-[72px]">
                             <div>
                                 <p className="text-white text-xl font-semibold">All Listings</p>
                                 <p className="text-sm text-gray-400">Showing 10 of 1,000 listings</p>
@@ -211,8 +214,8 @@ function page() {
                             </div>
                         </div>
                         <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 sm:gap-4 gap-2">
-                            {Array.from({ length: 12 }, (_, index) => (
-                                <ProductCard key={index} />
+                            {machinery?.map((item, index) => (
+                                <ProductCard key={index} data={item} />
                             ))}
                         </div>
                         <Pagination className={'mt-6 text-white'}>
