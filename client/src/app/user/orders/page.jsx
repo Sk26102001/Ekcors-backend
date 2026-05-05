@@ -11,8 +11,8 @@ import {
     Search,
     Filter,
     ArrowUpRight,
-    Package,
 } from "lucide-react";
+import Link from "next/link";
 
 export default function OrdersPage() {
     const params = useParams();
@@ -24,7 +24,6 @@ export default function OrdersPage() {
     const [selectedBooking, setSelectedBooking] = useState(null);
     const [showDriverModal, setShowDriverModal] = useState(false);
 
-    // ✅ Fetch Vendor Bookings
     useEffect(() => {
         // if (role !== "vendor") return;
 
@@ -71,6 +70,8 @@ export default function OrdersPage() {
             toast.error(err?.response?.data?.message || "Failed");
         }
     };
+
+    console.log(orders)
 
     return (
         <div className="w-full text-white max-w-6xl mx-auto">
@@ -147,17 +148,17 @@ export default function OrdersPage() {
                                             {order._id.slice(-6).toUpperCase()}
                                         </td>
 
-                                        <td className="p-4 flex gap-2 items-center">
-                                            <Package size={16} />
+                                        <td className="p-4 flex gap-2 items-center text-nowrap">
+                                            {/* <Package size={16} /> */}
                                             {order.vehicle?.title}
                                         </td>
 
                                         <td className="p-4">{order.user?.name}</td>
-                                        <td className="p-4">
-                                            {order.driver?.name || "-"}
+                                        <td className="p-4 text-sm text-nowrap">
+                                            {order.driver?.fullName || "-"}
                                         </td>
 
-                                        <td className="p-4 text-zinc-400">
+                                        <td className="p-4 text-zinc-400 text-sm">
                                             {new Date(order.createdAt).toLocaleDateString()}
                                         </td>
 
@@ -185,7 +186,9 @@ export default function OrdersPage() {
                                                     </button>
                                                 </div>
                                             ) : (
-                                                <ArrowUpRight size={18} />
+                                                <Link href={`/user/order-detail/${order._id}`}>
+                                                    <ArrowUpRight size={18} />
+                                                </Link>
                                             )}
                                         </td>
                                     </tr>
@@ -234,8 +237,8 @@ function StatusBadge({ status }) {
     };
 
     return (
-        <span className={`px-2 py-1 rounded ${styles[status]}`}>
-            {status}
+        <span className={`px-2 py-1 text-[10px] text-nowrap rounded-full uppercase ${styles[status]}`}>
+            {status.replace("_", " ")}
         </span>
     );
 }

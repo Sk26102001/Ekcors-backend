@@ -28,10 +28,12 @@ app.use(
 )
 
 app.use('/api/v1', express.static(path.join(process.cwd(), 'public')))
+// app.use('/public', express.static(path.join(process.cwd(), 'public')))
 
 app.use(
     helmet({
         contentSecurityPolicy: false,
+        crossOriginResourcePolicy: { policy: "cross-origin" }  
     }),
 )
 
@@ -54,9 +56,21 @@ app.get("/", (req, res) => {
     res.sendStatus(200);
 });
 
+
 app.use('/api/v1/users', userRoutes)
 app.use('/api/v1/machinery', machineryRoutes)
 app.use('/api/v1/bookings', bookingRoutes)
+app.get('/api/v1/', (req, res) => {
+  res.status(200).json({
+    status: 'success',
+    message: 'API v1 is running',
+    endpoints: {
+      users: '/api/v1/users',
+      machinery: '/api/v1/machinery',
+      bookings: '/api/v1/bookings'
+    }
+  });
+});
 
 app.all('/*catchAll', (req, res, next) => {
     next(new AppError(`Route '${req.originalUrl}' not found!`, 404))

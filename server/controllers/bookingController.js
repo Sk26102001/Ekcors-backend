@@ -107,6 +107,19 @@ exports.createBooking = catchAsync(async (req, res, next) => {
 
 });
 
+exports.getBooking = catchAsync(async (req, res, next) => {
+    const booking = await Booking.findById(req.params.id).populate("vehicle").populate("user");
+
+    if (!booking) {
+        return next(new AppError("Booking not found", 404));
+    }
+
+    res.status(200).json({
+        success: true,
+        data: booking
+    });
+});
+
 exports.getVendorBookings = catchAsync(async (req, res, next) => {
 
     const bookings = await Booking.find()
@@ -148,15 +161,27 @@ exports.assignDriver = catchAsync(async (req, res, next) => {
     });
 });
 
+exports.getDriverBookings = catchAsync(async (req, res, next) => {
+    const bookings = await Booking.find({ driver: req.user._id }).populate("vehicle").populate("user");
+
+    res.status(200).json({
+        success: true,
+        data: bookings
+    });
+});
+
 exports.updateBookingStatus = catchAsync(async (req, res, next) => {
     const { bookingId } = req.params;
     const { status } = req.body;
 
     const allowedStatuses = [
+        "pending",
         "confirmed",
         "driver_assigned",
-        "on_the_way",
         "started",
+        "on_the_way",
+        "reached",
+        "pending_payment",
         "completed",
         "cancelled",
     ];
