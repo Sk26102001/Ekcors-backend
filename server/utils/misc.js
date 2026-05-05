@@ -10,10 +10,18 @@ const cookieExpireDays = Number(process.env.JWT_COOKIE_EXPIRES_IN) || 90
 // }
 
 // FOR LOCALHOST
+// exports.cookieOptions = {
+//     httpOnly: true,
+//     secure: false,
+//     sameSite: "lax",
+//     path: "/",
+//     maxAge: 7 * 24 * 60 * 60 * 1000,
+// }
+
 exports.cookieOptions = {
     httpOnly: true,
-    secure: false,
-    sameSite: "lax",
+    secure: true,          // MUST be true on HTTPS (Vercel)
+    sameSite: "none",      // REQUIRED for cross-origin
     path: "/",
     maxAge: 7 * 24 * 60 * 60 * 1000,
 }
